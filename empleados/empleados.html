@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+    <style>
+      body {
+          background-color: #ecf0f5;
+          color: #333;
+          font-family: 'Arial', sans-serif;
+          padding: 20px;
+          text-align: center;
+      }
+
+      h1, h2 {
+          color: #3498db;
+      }
+
+      .container {
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          margin: 20px auto;
+          max-width: 600px;
+          padding: 0;
+      }
+
+      form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .form-group {
+          margin-bottom: 15px;
+          text-align: left;
+          width: 100%;
+      }
+
+      label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+      }
+
+      input {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 5px;
+      }
+
+      button {
+          background-color: #3498db;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: #2980b9;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          margin: 10px;
+          text-decoration: none;
+          background-color: #3498db;
+          color: #fff;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+          background-color: #2980b9;
+      }
+    </style>
+
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Validaciones de formularios -->
+    <script>// Validacion adaptada al formulario de empleados
+      function validarFormularioEmpleados() {
+
+      var empleadoNombre = document.getElementById("empleadoNombre").value;
+      var empleadoApellido = document.getElementById("empleadoApellido").value;
+      var empleadoDni = document.getElementById("empleadoDni").value;
+      var empleado_direccion = document.getElementById("empleado_direccion").value;
+      var empleadoTelefono = document.getElementById("empleadoTelefono").value;
+      var empleadoMail = document.getElementById("empleadoMail").value;
+
+      if (empleadoNombre.trim() === "") {
+          alert("Por favor, complete el campo del nombre del empleado.");
+          return false;
+      }
+      if (empleadoApellido.trim() === "") {
+          alert("Por favor, complete el campo del nombre del empleado.");
+          return false;
+      }
+      if (empleadoDni.trim() === "") {
+          alert("Por favor, complete el campo del D.N.I. del empleado sin puntos ni comas.");
+          return false;
+      }       
+
+      return true; // El formulario se enviará si todos los campos están completos a excepción del teléfono y el mail.
+      }
+  </script>
+
+    <!-- Cargar el módulo de clientes al hacer clic en el enlace de clientes -->
+    <script>
+      $(document).ready(function () {
+        $("#empleados-link").click(function () {
+          $.get("empleados/", function (data) {
+            $("#workspace").html(data);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Carga de Empleados</h2>
+      <form action="/boopstrap/empleados/datos_recibidos.php" method="post" onsubmit="return validarFormularioEmpleados();">
+        <div class="form-group">
+          <label for="empleadoNombre">Nombre/s:</label>
+          <input type="text" id="empleadoNombre" name="empleadoNombre">
+        </div>
+        <div class="form-group">
+          <label for="empleadoApellido">Apellido/s:</label>
+          <input type="text" id="empleadoApellido" name="empleadoApellido" >
+        </div>
+        <div class="form-group">
+          <label for="empleadoDni">D.N.I.:</label>
+          <input type="text" id="empleadoDni" name="empleadoDni" >
+        </div>
+        <div class="form-group">
+          <label for="empleado_direccion">Dirección::</label>
+          <input type="text" id="empleado_direccion" name="empleado_direccion" >
+        </div>
+        <div class="form-group">
+          <label for="empleadoTelefono">Teléfono:</label>
+          <input type="text" id="empleadoTelefono" name="empleadoTelefono" >
+        </div>
+        <div class="form-group">
+          <label for="empleadoMail">Correo electrónico:</label>
+          <input type="email" id="empleadoMail" name="empleadoMail" >
+        </div>
+        <button type="submit">Agregar nuevo empleado</button>
+      </form>
+  </div>
+  </body>
+</html>

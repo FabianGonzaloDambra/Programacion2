@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehículos</title>
+    <style>
+      body {
+          background-color: #ecf0f5;
+          color: #333;
+          font-family: 'Arial', sans-serif;
+          padding: 20px;
+          text-align: center;
+      }
+
+      h1, h2 {
+          color: #3498db;
+      }
+
+      .container {
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          margin: 20px auto;
+          max-width: 600px;
+          padding: 0;
+      }
+
+      form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .form-group {
+          margin-bottom: 15px;
+          text-align: left;
+          width: 100%;
+      }
+
+      label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+      }
+
+      input {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 5px;
+      }
+
+      button {
+          background-color: #3498db;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: #2980b9;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          margin: 10px;
+          text-decoration: none;
+          background-color: #3498db;
+          color: #fff;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+          background-color: #2980b9;
+      }
+    </style>
+
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Validaciones de formularios -->
+    <script>// Validacion adaptada al formulario de vehículos
+      function validarFormularioVehiculos() {
+
+      var vehiculoMarca = document.getElementById("vehiculoMarca").value;
+      var vehiculoModelo = document.getElementById("vehiculoModelo").value;
+      var vehiculoAniomodelo = document.getElementById("vehiculoAniomodelo").value;
+      var vehiculoColor = document.getElementById("vehiculoColor").value;
+      var vehiculoTipo = document.getElementById("vehiculoTipo").value;
+      var vehiculoPatente = document.getElementById("vehiculoPatente").value;
+      var vehiculoNombretitulo = document.getElementById("vehiculoNombretitulo").value;
+      var vehiculoCostocompra = document.getElementById("vehiculoCostocompra").value;
+      var vehiculoFechacompra = document.getElementById("vehiculoFechacompra").value;
+      var vehiculoKmingreso = document.getElementById("vehiculoKmingreso").value;
+      var vehiculoCambioaceite = document.getElementById("vehiculoCambioaceite").value;
+      var vehiculoCambiocorrea = document.getElementById("vehiculoCambiocorrea").value;
+      var vehiculoDetalles = document.getElementById("vehiculoDetalles").value;
+      var vehiculoCostosreparaciones = document.getElementById("vehiculoCostosreparaciones").value;
+      var vehiculoKmsalida = document.getElementById("vehiculoKmsalida").value;
+      
+
+      if (vehiculoMarca.trim() === "") {
+          alert("Por favor, complete el campo de la marca del vehículo.");
+          return false;
+      }
+      if (vehiculoTipo.trim() === "") {
+          alert("Por favor, complete la clasificación del vehículo según su tipo (automóvil, camioneta, SUV, etc.).");
+          return false;
+      }
+      if (vehiculoPatente.trim() === "") {
+          alert("Por favor, ingrese la patente del vehículo.");
+          return false;
+      }
+
+      return true; // El formulario se enviará si los campos de marca, tipo y patente están completos.
+      }
+    </script>
+
+    <!-- Cargar el módulo de clientes al hacer clic en el enlace de clientes -->
+    <div class="container">
+      <h2>Carga de Vehículos</h2>
+      <form action="/boopstrap/vehiculos/datos_recibidos.php" method="post" onsubmit="return validarFormularioVehiculos();">
+        <div class="form-group">
+          <label for="vehiculoMarca">Marca:</label>
+          <input type="text" id="vehiculoMarca" name="vehiculoMarca">
+        </div>
+        <div class="form-group">
+          <label for="vehiculoModelo">Modelo:</label>
+          <input type="text" id="vehiculoModelo" name="vehiculoModelo" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoAniomodelo">Año del modelo:</label>
+          <input type="number" id="vehiculoAniomodelo" name="vehiculoAniomodelo" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoColor">Color:</label>
+          <input type="text" id="vehiculoColor" name="vehiculoColor" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoTipo">Categoría:</label>
+          <input type="text" id="vehiculoTipo" name="vehiculoTipo" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoPatente">Patente:</label>
+          <input type="text" id="vehiculoPatente" name="vehiculoPatente" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoNombretitulo">Nombre del titular:</label>
+          <input type="text" id="vehiculoNombretitulo" name="vehiculoNombretitulo" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoCostocompra">Costo de compra:</label>
+          <input type="text" id="vehiculoCostocompra" name="vehiculoCostocompra" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoFechacompra">Fecha de adquisición:</label>
+          <input type="date" id="vehiculoFechacompra" name="vehiculoFechacompra" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoKmingreso">Kilometraje al ingreso:</label>
+          <input type="text" id="vehiculoKmingreso" name="vehiculoKmingreso" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoCambioaceite">Último cambio de aceite:</label>
+          <input type="date" id="vehiculoCambioaceite" name="vehiculoCambioaceite" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoCambiocorrea">Último cambio de correa:</label>
+          <input type="date" id="vehiculoCambiocorrea" name="vehiculoCambiocorrea" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoDetalles">Detalles y observaciones:</label>
+          <input type="text" id="vehiculoDetalles" name="vehiculoDetalles" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoCostosreparaciones">Costo acumulado de reparaciones y repuestos:</label>
+          <input type="text" id="vehiculoCostosreparaciones" name="vehiculoCostosreparaciones" >
+        </div>
+        <div class="form-group">
+          <label for="vehiculoKmsalida">Kilometraje al vender:</label>
+          <input type="text" id="vehiculoKmsalida" name="vehiculoKmsalida" >
+        </div>
+        
+        <button type="submit">Agregar nuevo vehículo</button>
+      </form>
+  </div>
+  </body>
+</html>

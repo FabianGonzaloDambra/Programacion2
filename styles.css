@@ -1,0 +1,144 @@
+/* Reset de estilos y estilos básicos */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #ffffff, #1e3951);
+  border-radius: 6px;
+  box-shadow: inset 3px 3px 3px rgba(255, 255, 255, .7), inset -2px -2px 3px rgba(0, 0, 0, .1), 2px 2px 10px rgba(0, 0, 0, .1);
+  overflow: auto;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+main {
+  padding: 20px 0;
+}
+
+/* Estilos para el formulario de inicio de sesión */
+.login {
+  width: 300px;
+  margin: 1% auto;
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.login input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.login button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login button:hover {
+  background-color: #45a049;
+}
+
+.correcto, .error {
+  display: none;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.correcto {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.error {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background-color: #1e3951;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: inset 3px 3px 3px rgba(255, 255, 255, .7), inset -2px -2px 3px rgba(0, 0, 0, .1), 2px 2px 10px rgba(0, 0, 0, .1);
+}
+
+footer h1 {
+  margin: 0;
+}
+
+footer h2 {
+  margin-top: 5px;
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer li {
+  display: inline;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Estilos adicionales para una apariencia más moderna */
+main.servicio {
+  background-color: palegreen;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: inset 3px 3px 3px rgba(255, 255, 255, .7), inset -2px -2px 3px rgba(0, 0, 0, .1), 2px 2px 10px rgba(0, 0, 0, .1);
+}
+
+h1 {
+  text-align: center;
+  color: rgb(19, 97, 97);
+}
+
+/* Estilos para el formulario responsivo */
+@media screen and (max-width: 600px) {
+  .login {
+      width: 80%;
+  }
+}
+
+.circle1 {
+  position: absolute;
+  bottom: 0%;
+  right: 67%;
+  width: 10%;
+  height: auto;
+  z-index: -1;
+}
+
+.circle2 {
+  position: absolute;
+  bottom: 0%;
+  right: 24%;
+  width: 10%;
+  height: auto;
+  z-index: -1;
+}

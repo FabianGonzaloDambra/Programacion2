@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#loginForm").submit(function (event) {
+                event.preventDefault();
+
+                var usuarioNombre = $("#usuarioNombre").val();
+                var usuarioPass = $("#usuarioPass").val();
+                var usuarioEmail = $("#usuarioEmail").val();
+
+                var data = {
+                    usuarioNombre: usuarioNombre,
+                    usuarioPass: usuarioPass,
+                    usuarioEmail: usuarioEmail
+                };
+
+                // Realizar la solicitud AJAX para verificar la autenticación
+                $.ajax({
+                    type: "POST",
+                    url: "verificar_login.php",
+                    data: data,
+                    success: function (response) {
+                        console.log(response)
+                        if (response === "Inicio Exitoso") {
+                            $("#mensajeSuccess").html("Inicio de Sesión Exitoso");
+                            $("#mensajeSuccess").show(); // Mostrar mensaje de éxito
+                            $("#mensajeError").hide(); // Ocultar mensaje de error
+                            window.location.href = "home.html";
+                        } else {
+                            $("#mensajeError").html("Usuario o contraseña incorrectos.");
+                            $("#mensajeError").show(); // Mostrar mensaje de error
+                            $("#mensajeSuccess").hide(); // Ocultar mensaje de éxito
+                        }
+                    }
+                });
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <main class="servicio">
+        <h1>Ernesto Gustavo Vazquez Automotores</h1>
+        <div class="servicio-contenido container"></div>
+    </main>
+
+    <div class="main">
+        <div class="login">
+            <div class='correcto' id="mensajeSuccess"></div>
+            <div class='error' id="mensajeError"></div>
+            <form id="loginForm">
+                <h2>Iniciar Sesión en el Sistema</h2>
+                <input type="text" name="usuarioNombre" id="usuarioNombre" placeholder="Usuario" required>
+                <input type="password" name="usuarioPass" id="usuarioPass" placeholder="Contraseña" required>
+                <input type="email" name="usuarioEmail" id="usuarioEmail" placeholder="Email" required>
+                <button type="submit">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://www.instagram.com/vazquezautomoviles"><img src="img/circle.png" alt="Ernesto Gustavo Vazquez Automotores" class="circle1"></a>
+        <h1>Grupo 2</h1>
+        <p><h2>Integrantes</h2></p>
+        <ul>
+            <li>Dambra Fabián Gonzalo</li>
+            <li>Ruiz Enrique Rodolfo</li>
+            <li>Vera Giuliana</li>
+        </ul>
+        <a href="https://www.facebook.com/profile.php?id=100092504651388&locale=es_LA"><img src="img/circle.png" alt="Ernesto Gustavo Vazquez Automotores" class="circle2"></a>
+    </footer>
+</body>
+
+</html>

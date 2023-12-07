@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <style>
+      body {
+          background-color: #ecf0f5;
+          color: #333;
+          font-family: 'Arial', sans-serif;
+          padding: 20px;
+          text-align: center;
+      }
+
+      h1, h2 {
+          color: #3498db;
+      }
+
+      .container {
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          margin: 20px auto;
+          max-width: 600px;
+          padding: 0;
+      }
+
+      form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .form-group {
+          margin-bottom: 15px;
+          text-align: left;
+          width: 100%;
+      }
+
+      label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+      }
+
+      input {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 5px;
+      }
+
+      button {
+          background-color: #3498db;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: #2980b9;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          margin: 10px;
+          text-decoration: none;
+          background-color: #3498db;
+          color: #fff;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+          background-color: #2980b9;
+      }
+    </style>
+
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Validaciones de formularios -->
+    <script>
+      // Validacion copiada del ejercicio y adaptada al formulario de clientes        
+      function validarFormularioClientes() {
+        var clienteNombre = document.getElementById("clienteNombre").value;
+        var clienteApellido = document.getElementById("clienteApellido").value;
+        var clienteDni = document.getElementById("clienteDni").value;
+        var clienteTelefono = document.getElementById("clienteTelefono").value;
+        var clienteMail = document.getElementById("clienteMail").value;
+
+        if (clienteNombre.trim() === "") {
+          alert("Por favor, complete el campo del nombre del cliente.");
+          return false;
+        }
+        if (clienteApellido.trim() === "") {
+          alert("Por favor, complete el campo el apellido del cliente.");
+          return false;
+        }
+        if (clienteDni.trim() === "") {
+          alert("Por favor, complete el campo del D.N.I. del cliente sin puntos ni comas.");
+          return false;
+        }       
+
+        return true; // El formulario se enviará si todos los campos están completos a excepción del teléfono y el mail.
+      }
+    </script>
+
+    <!-- Cargar el módulo de clientes al hacer clic en el enlace de clientes -->
+    <script>
+      $(document).ready(function () {
+        $("#clientes-link").click(function () {
+          $.get("clientes/", function (data) {
+            $("#workspace").html(data);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Carga de Clientes</h2>
+      <form action="/boopstrap/clientes/datos_recibidos.php" method="post" onsubmit="return validarFormularioClientes();">
+        <div class="form-group">
+          <label for="clienteNombre">Nombre/s:</label>
+          <input type="text" id="clienteNombre" name="clienteNombre">
+        </div>
+        <div class="form-group">
+          <label for="clienteApellido">Apellido/s:</label>
+          <input type="text" id="clienteApellido" name="clienteApellido">
+        </div>
+        <div class="form-group">
+          <label for="clienteDni">D.N.I.:</label>
+          <input type="text" id="clienteDni" name="clienteDni">
+        </div>
+        <div class="form-group">
+          <label for="clienteTelefono">Teléfono:</label>
+          <input type="text" id="clienteTelefono" name="clienteTelefono">
+        </div>
+        <div class="form-group">
+          <label for="clienteMail">Correo electrónico:</label>
+          <input type="email" id="clienteMail" name="clienteMail">
+        </div>
+        <button type="submit">Agregar nuevo cliente</button>
+      </form>
+    </div>
+  </body>
+</html>
